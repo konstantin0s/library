@@ -6,7 +6,7 @@ const authorSchema = new Schema({
   firstName: String,
   lastName: String,
   nationality: String,
-  brithday: Date,
+  brithDay: Date,
   createdAt: Date,
   updatedAt: Date,
 }, {

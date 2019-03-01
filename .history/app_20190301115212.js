@@ -9,10 +9,8 @@ const app = express();
 //routers
 const index = require('./routes/index');
 app.use('/', index);
-const addBooks = require('./routes/addBooks');
+const addBooks = require('./routes/index');
 app.use('/', addBooks);
-const books = require('./routes/books');
-app.use('/', books);
 
 //add views hbs
 app.set('views', path.join(__dirname, 'views'));
