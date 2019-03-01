@@ -1,0 +1,11 @@
+<h1>Welcome to the jungle</h1>
+
+
+ <select name="" id="">
+        {{#each authors}}
+    <option value="{{author._doc.firstName}}">
+      {{author._doc.firstName}}
+      {{this._doc.firstName}}
+    </option>
+    {{/each}}
+  </select>
