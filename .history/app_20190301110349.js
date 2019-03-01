@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //add mongoose 
 mongoose
-  .connect('mongodb://localhost/library', {useNewUrlParser: true})
+  .connect('mongodb://localhost/recipes', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
