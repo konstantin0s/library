@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router  = express.Router();
-let Books = require('../models/book');
+let Books = require('../models/Book');
 
 
 router.get('/book/:id', function(req, res) {

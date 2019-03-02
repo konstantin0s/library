@@ -14,12 +14,12 @@ let Authors = require('./models/author');
 const index = require('./routes/index');
 app.use('/', index);
 
-// const books = require('./routes/books');
-// app.use('/', books);
-// const book = require('./routes/book');
-// app.use('/', book);
-// const addBooks = require('./routes/addBooks');
-// app.use('/', addBooks);
+const books = require('./routes/books');
+app.use('/', books);
+const book = require('./routes/book');
+app.use('/', book);
+const addBooks = require('./routes/addBooks');
+app.use('/', addBooks);
 
 //add views hbs
 app.set('views', path.join(__dirname, 'views'));

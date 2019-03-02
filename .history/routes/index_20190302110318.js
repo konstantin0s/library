@@ -7,10 +7,6 @@ const mongoose     = require('mongoose');
 let Books = require('../models/book');
 let Authors = require('../models/author');
 
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
-
-
 /* GET home page */
 router.get('/', (req, res) => {
   res.render('index');
@@ -40,6 +36,11 @@ router.get('/book/:id', function(req, res) {
 })
 
 
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
+
+
+
 router.get('/books/add', function(req, res, next) {
   Authors.find({}, (err, authors) => {
     if (err) {
@@ -67,9 +68,21 @@ router.post('/books/add', function(req, res, next) {
 
 
 
-router.post('/book', (req, res, next) => {
+router.post('/reviews/add', (req, res, next) => {
   const { user, comments } = req.body;
-  Books.updateOne({ _id: req.query.book_id }, { $push: { reviews: { user, comments }}})
+  Books.update({ _id: req.query.book_id }, { $push: { reviews: { user, comments }}})
+  .then(book => {
+    res.redirect('/books')
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+});
+
+
+router.post('/reviews/add', (req, res, next) => {
+  const { user, comments } = req.body;
+  Books.update({ _id: req.query.book_id }, { $push: { reviews: { user, comments }}})
   .then(book => {
     res.redirect('/book/' + req.query.book_id)
   })
@@ -77,5 +90,4 @@ router.post('/book', (req, res, next) => {
     console.log(error)
   })
 })
-
 module.exports = router;

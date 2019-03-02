@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router  = express.Router();
-let Books = require('../models/book');
+let Books = require('../models/Book');
 
 
 router.get('/book/:id', function(req, res) {
@@ -14,8 +14,10 @@ router.get('/book/:id', function(req, res) {
 
 router.post('/reviews/add', (req, res, next) => {
   const { user, comments } = req.body;
+  debugger;
   Books.update({ _id: req.query.book_id }, { $push: { reviews: { user, comments }}})
   .then(book => {
+    debugger
     res.redirect('/books')
   })
   .catch((error) => {

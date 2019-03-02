@@ -17,13 +17,20 @@
        <h4>Rating: {{book._doc.rating}}</h4>
        <h4>Created at: {{book._doc.createdAt}}</h4>
        <h4>Updated at: {{book._doc.updatedAt}}</h4>
-   
+
+       <h2>Reviews</h2>
+    {{#each book.reviews}}
+    <div class="review-item">
+  <p>{{this.comments}}</p>
+  <span>{{this.user}}</span>
+</div>
+{{/each}}    
      {{!-- <button class="btn btn-default"> <a href="/recipe/edit/{{book.id}}">Edit</a></button>
       <a href="#" class="btn btn-danger delete-recipe" data-id="{{book.id}}">Delete</a> --}}
     </div>
 
                  <p>Add a review</p>
-  <form action="/book?book_id={{book._id}}" method="post">
+  <form action="/reviews/add?book_id={{book._id}}" method="post">
   <label for="">User:</label>
   <input type="text" name="user">
 
@@ -32,15 +39,6 @@
 
   <button type="submit">ADD</button>
 </form>
-
-
-       <h2>Reviews</h2>
-    {{#each book.reviews}}
-    <div class="review-item">
-  <p>{{this.comments}}</p>
-  <span>{{this.user}}</span>
-</div>
-{{/each}} 
 
 </body>
 </html>

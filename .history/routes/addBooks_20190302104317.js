@@ -4,8 +4,8 @@ const router  = express.Router();
 const path         = require('path');
 const bodyParser   = require('body-parser');
 const mongoose     = require('mongoose');
-let Book = require('../models/book');
-let Author = require('../models/author');
+let Book = require('../models/Book');
+let Author = require('../models/Author');
 
 
 router.use(bodyParser.urlencoded({ extended: false }));
